@@ -3,12 +3,12 @@ import datetime
 from enum import Enum
 
 class LogLevel(Enum):
-    TRACE = 10,
-    DEBUG = 20,
+    TRACE = 10
+    DEBUG = 20
     INFO  = 30
-    WARN  = 40,
-    ERROR = 50,
-    FATAL = 60,
+    WARN  = 40
+    ERROR = 50
+    FATAL = 60
     NONE  = 70
 
 class EasyLog:
