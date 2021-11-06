@@ -109,3 +109,5 @@ class EasyLog:
         log += message
         self.f.write(log)
         return True
+
+logger = EasyLog()
