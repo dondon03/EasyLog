@@ -3,12 +3,12 @@ import datetime
 from enum import Enum
 
 class LogLevel(Enum):
-    TRACE = 10,
-    DEBUG = 20,
+    TRACE = 10
+    DEBUG = 20
     INFO  = 30
-    WARN  = 40,
-    ERROR = 50,
-    FATAL = 60,
+    WARN  = 40
+    ERROR = 50
+    FATAL = 60
     NONE  = 70
 
 class EasyLog:
@@ -80,7 +80,7 @@ class EasyLog:
         self.f.write(log)
         return True
 
-    def info(self, message, show = True):
+    def warn(self, message, show = True):
         if (LogLevel.WARN.value < self.log_level.value):
             return False
         log = ''
