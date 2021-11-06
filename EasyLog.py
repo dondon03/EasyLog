@@ -80,7 +80,7 @@ class EasyLog:
         self.f.write(log)
         return True
 
-    def info(self, message, show = True):
+    def warn(self, message, show = True):
         if (LogLevel.WARN.value < self.log_level.value):
             return False
         log = ''
