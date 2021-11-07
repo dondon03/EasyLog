@@ -1,5 +1,6 @@
 import inspect
 import datetime
+import os
 from enum import Enum
 
 class LogLevel(Enum):
@@ -12,7 +13,9 @@ class LogLevel(Enum):
     NONE  = 70
 
 class EasyLog:
-    def __init__(self, log_level = LogLevel.DEBUG, filename = 'LogFile'):
+    def __init__(self, log_level = LogLevel.DEBUG, filename = 'log/LogFile'):
+        self.create_dir(filename)
+        
         # log file open
         now = datetime.datetime.now()
         filename = filename + now.strftime('_%Y%m%d%H%M%S')+ '.log'
@@ -31,6 +34,11 @@ class EasyLog:
     def __del__(self):
         self.f.close()
         
+    def create_dir(self, path):
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+
     def get_log_str(self, level):
         now = datetime.datetime.now()
         now = now.strftime('%Y/%m/%d %H:%M:%S').ljust(19)
