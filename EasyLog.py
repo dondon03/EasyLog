@@ -14,7 +14,7 @@ class LogLevel(Enum):
 
 class EasyLog:
 
-    def init_param(self):
+    def set_init_param(self):
         # len paramaster
         self.level_len = 8
         self.fn_len = 50
@@ -23,9 +23,8 @@ class EasyLog:
         self.no_len = 6
 
     def __init__(self, log_level = LogLevel.DEBUG, filename = 'log/LogFile'):
-        self.create_dir(filename)
-        
         # log file open
+        self.create_dir(filename)
         now = datetime.datetime.now()
         filename = filename + now.strftime('_%Y%m%d%H%M%S')+ '.log'
         self.f = open(filename, 'w')
@@ -33,7 +32,8 @@ class EasyLog:
         # log level
         self.log_level = log_level
         
-        self.init_param()
+        # set param
+        self.set_init_param()
 
     def __del__(self):
         self.f.close()
