@@ -24,6 +24,7 @@ class EasyLog:
         # len paramaster
         self.level_len = 8
         self.fn_len = 50
+        self.cls_len = 10
         self.fnc_len = 30
         self.no_len = 6
 
@@ -32,10 +33,11 @@ class EasyLog:
         now = now.strftime('%Y/%m/%d %H:%M:%S').ljust(19)
         level = level.ljust(self.level_len)
         fn = inspect.currentframe().f_back.f_back.f_code.co_filename.ljust(self.fn_len)
+        cls = inspect.currentframe().f_back.f_back.f_locals.get('self').__class__.__name__.ljust(self.cls_len)
         fnc = inspect.currentframe().f_back.f_back.f_code.co_name.ljust(self.fnc_len)
         no = str(inspect.currentframe().f_back.f_back.f_lineno).ljust(self.no_len)
         
-        log = ('{} [{} : {} : {}@{}] ').format(level, now, fn, fnc, no)
+        log = ('{} [{} : {} : {}@{}@{}] ').format(level, now, fn, cls, fnc, no)
         return log
 
     def fnc_in(self):
