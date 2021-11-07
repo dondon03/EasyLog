@@ -13,6 +13,15 @@ class LogLevel(Enum):
     NONE  = 70
 
 class EasyLog:
+
+    def init_param(self):
+        # len paramaster
+        self.level_len = 8
+        self.fn_len = 50
+        self.cls_len = 10
+        self.fnc_len = 50
+        self.no_len = 6
+
     def __init__(self, log_level = LogLevel.DEBUG, filename = 'log/LogFile'):
         self.create_dir(filename)
         
@@ -23,13 +32,8 @@ class EasyLog:
 
         # log level
         self.log_level = log_level
-
-        # len paramaster
-        self.level_len = 8
-        self.fn_len = 50
-        self.cls_len = 10
-        self.fnc_len = 50
-        self.no_len = 6
+        
+        self.init_param()
 
     def __del__(self):
         self.f.close()
