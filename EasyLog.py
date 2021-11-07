@@ -28,6 +28,9 @@ class EasyLog:
         self.fnc_len = 30
         self.no_len = 6
 
+    def __del__(self):
+        self.f.close()
+        
     def get_log_str(self, level):
         now = datetime.datetime.now()
         now = now.strftime('%Y/%m/%d %H:%M:%S').ljust(19)
