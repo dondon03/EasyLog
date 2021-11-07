@@ -28,12 +28,14 @@ class EasyLog:
         self.no_len = 6
 
     def get_log_str(self, level):
+        now = datetime.datetime.now()
+        now = now.strftime('%Y/%m/%d %H:%M:%S').ljust(19)
         level = level.ljust(self.level_len)
         fn = inspect.currentframe().f_back.f_back.f_code.co_filename.ljust(self.fn_len)
         fnc = inspect.currentframe().f_back.f_back.f_code.co_name.ljust(self.fnc_len)
         no = str(inspect.currentframe().f_back.f_back.f_lineno).ljust(self.no_len)
         
-        log = ('{} [{} : {}@{}] ').format(level, fn, fnc, no)
+        log = ('{} [{} : {} : {}@{}] ').format(level, now, fn, fnc, no)
         return log
 
     def fnc_in(self):
