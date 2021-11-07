@@ -37,7 +37,9 @@ class EasyLog:
         level = level.ljust(self.level_len)
         fn = inspect.currentframe().f_back.f_back.f_code.co_filename.ljust(self.fn_len)
         cls = inspect.currentframe().f_back.f_back.f_locals.get('self').__class__.__name__.ljust(self.cls_len)
-        fnc = inspect.currentframe().f_back.f_back.f_code.co_name.ljust(self.fnc_len)
+        fnc = inspect.currentframe().f_back.f_back.f_code.co_name
+        vars = inspect.currentframe().f_back.f_back.f_code.co_varnames.__str__()
+        fnc = (fnc + vars).ljust(self.fnc_len)
         no = str(inspect.currentframe().f_back.f_back.f_lineno).ljust(self.no_len)
         
         log = ('{} [{} : {} : {}@{}@{}] ').format(level, now, fn, cls, fnc, no)
