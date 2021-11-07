@@ -25,7 +25,7 @@ class EasyLog:
         self.level_len = 8
         self.fn_len = 50
         self.cls_len = 10
-        self.fnc_len = 30
+        self.fnc_len = 50
         self.no_len = 6
 
     def __del__(self):
